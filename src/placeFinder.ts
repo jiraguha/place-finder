@@ -1,4 +1,20 @@
 import fetch from 'node-fetch';
+
+/**
+ * Searches for a place using the Google Maps Geocoding API
+ * 
+ * @param placeName - The name of the place to search for (e.g., "Paris, France")
+ * @returns Promise resolving to a PlaceResult object containing location details
+ * @throws Will throw an error if the API key is not set
+ * 
+ * @example
+ * ```typescript
+ * const result = await findPlace("Tokyo, Japan");
+ * if (result.found) {
+ *   console.log(result.coordinates);
+ * }
+ * ```
+ */
 export async function findPlace(placeName: string): Promise<PlaceResult> {
     try {
         const apiKey = process.env.GOOGLE_MAPS_API_KEY;

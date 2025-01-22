@@ -1,4 +1,11 @@
 // cli.ts
+/**
+ * Command-line interface for the Place Finder application
+ * Provides a user-friendly way to search for places using Google Maps API
+ * 
+ * @module cli
+ */
+
 import { Command } from 'commander';
 import { findPlace } from './placeFinder';
 import chalk from 'chalk';
@@ -9,8 +16,8 @@ program
     .name('place-finder')
     .description('CLI to find information about places using Google Maps API')
     .version('1.0.0')
-    .argument('<place>', 'Name of the place to search for')
-    .option('-j, --json', 'Output in JSON format')
+    .argument('<place>', 'Name of the place to search for (e.g., "Paris, France")')
+    .option('-j, --json', 'Output results in JSON format instead of human-readable text')
     .action(async (place: string, options: { json: boolean }) => {
         try {
             const result = await findPlace(place);
